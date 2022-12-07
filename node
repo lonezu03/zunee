@@ -1,0 +1,66 @@
+#include"dau.h"
+
+void taolist(nodep &list) {
+	list = NULL;
+}
+nodep taonode(int x) {
+	nodep p = new node;
+	p->data = x;
+	p->link = NULL;
+	return p;
+}
+void addlast(nodep &list,int x) {
+	nodep p = taonode(x);
+	if (list == NULL)
+		list = p;
+	else {
+		p->link = list;
+		list = p;
+	}
+}
+void taoDS(nodep &list) {
+	int x;
+//	nodep p;
+	taolist(list);
+	do {
+		cout << "nhap x: ";
+		cin >> x;
+		if (x != -99) {
+			
+			addlast(list, x);
+		}
+	} while (x != -99);
+}
+void tach(nodep &list, nodep &list1, nodep &list2) {
+	taolist(list1);
+	taolist(list2);
+	nodep p = list;
+	//cout << "\ncmn" << endl;
+	while (p != NULL)
+	{
+		
+		if(p->data<0)
+		{
+			nodep q = p;
+			addlast(list1, q->data);
+			cout << list1->data;
+		}
+		else if(p->data>0)
+		{
+			nodep q = p;
+			addlast(list2,q->data);
+		}
+		p = p->link;
+	}
+	//cout << "\ncmn" << endl;
+}
+void xuat(nodep list) {
+	nodep p = list;
+	cout << "\nXuat ne` ne' di !!!"<<endl;
+	while (p != NULL) {
+		cout << "\t" << p->data;
+		p = p->link;
+		//cout << "\n NJU" << endl;
+	}
+	cout << "\nket thuc xuat" << endl;
+}
